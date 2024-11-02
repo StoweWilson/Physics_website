@@ -1,0 +1,175 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins',sans-serif;
+    background-color:white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+
+.gradient-block{
+    height: 30vh;
+    background: linear-gradient(to bottom,transparent,black );
+    width: calc(100% - 30px);
+    position: relative;
+    margin: 0 auto;
+    padding: 15px;
+    
+    
+}
+.black-box {
+    height: 1000px;
+    background-color: black;
+    width: calc(100% - 30px);
+    position: relative;
+    bottom: 90px;
+    padding: 15px;
+    margin: 0 auto;
+    top: -5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+.idontword{
+    color: white;
+    font-size: 6rem;
+    font-weight: bold;
+    text-align: center;
+    
+}
+.made{
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5px;
+    
+}
+.button-container{
+    display: flex;
+    gap: 30px; /* Space between the buttons */
+    justify-content: center; /* Center them within the black box */
+    margin-top: 80px;
+}
+.kin-button, .quad-button,.vec-button{
+
+    display: inline-block;
+    padding: 40px 40px;
+    background-color: white;
+    color: black;
+    font-size: 3rem;
+    font-weight: bold;
+    border-radius: 15px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+.kin-button:hover{
+    background-color: rgb(245, 0, 0);
+}
+.quad-button:hover{
+    background-color: rgb(255, 171, 37);
+}
+.vec-button:hover{
+    background-color: rgb(72, 175, 67);
+}
+
+.mainword{
+    position: relative;
+    margin-top: 45vh;
+    left: 60%;
+    transform: translateX(-45%);
+    white-space: nowrap;
+}
+.mainword a{
+    color: black;
+    font-size: 5rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/*.idontword a{
+    color: rgb(255, 255, 255);
+    font-size: 5rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+/* logo/home button*/
+.logo {
+    position: fixed; /* Fix it to the top-left */
+    top: 20px;
+    left: 20px; /* Adjust left spacing if needed */
+    z-index: 10;
+}
+
+.logo a{
+    color: black;
+    font-size: 2rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+.logo a:hover{
+    color: blanchedalmond;
+}
+.nav-list{
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.nav-list a {
+    text-decoration: none;
+    font-weight: 600;
+    color:black;
+    padding: 10px 20px;
+    background-color:rgb(255, 255, 255);
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+.navbar{
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    padding: 20px 30px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+
+.nav-list li {
+    margin: 0 5px;
+}
+
+.nav-list a:hover {
+    background-color: #555;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column
+    }
+
+    .nav-list {
+        flex-direction: column;
+    }
+
+    .nav-list li {
+        margin: 10px 0;
+    }
+}
