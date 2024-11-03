@@ -226,7 +226,7 @@ async function calculateKinematicQuantities() {
 }
 
 // Main function to gather inputs
-async function main() {
+async function main() { 
     const outputDiv = document.getElementById("output");
     outputDiv.innerHTML = "Physics Kinematic Calculator 1.0\n";
 
