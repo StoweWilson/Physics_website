@@ -1,5 +1,5 @@
 # Physics_web
-A personal project to pratice Full Stack development/n
+A personal project to pratice Full Stack development
 Website Goals:
 1. help solve kinesmatic problem
 2. explain kinesmatic
