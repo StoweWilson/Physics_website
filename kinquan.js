@@ -111,7 +111,7 @@ async function calculateKinematicQuantities() {
     }
     // Call main() to reset and start over
 
-}
+} 
 async function main() {
     
     await calculateKinematicQuantities();

@@ -11,9 +11,8 @@ body{
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    
 }
-
-
 .gradient-block{
     height: 30vh;
     background: linear-gradient(to bottom,transparent,black );
@@ -54,14 +53,51 @@ body{
     margin-top: 5px;
     
 }
-.button-container{
+/* Container for the buttons */
+.button-container {
     display: flex;
-    gap: 30px; /* Space between the buttons */
-    justify-content: center; /* Center them within the black box */
+    align-items: center;  /* Center buttons vertically */
+    justify-content: center;  /* Center buttons horizontally */
     margin-top: 80px;
+    position: relative;
+    width: 100%; /* Ensure full width */
 }
-.kin-button, .quad-button,.vec-button{
 
+/* Add left and right scroll buttons */
+.scroll-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 3rem;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+/* Button wrapper for scrolling */
+.buttons-wrapper {
+    display: flex;
+    gap: 30px;  /* Space between the buttons */
+    justify-content: flex-start; /* Align buttons from the left */
+    transition: transform 0.3s ease; /* Smooth scrolling transition */
+    width: max-content;  /* Ensure wrapper is large enough to hold all buttons */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    scroll-behavior: smooth; /* Smooth scroll transition */
+}
+
+/* Style individual buttons */
+.kin-button, .quad-button, .vec-button {
     display: inline-block;
     padding: 40px 40px;
     background-color: white;
@@ -72,14 +108,21 @@ body{
     text-decoration: none;
     transition: background-color 0.3s ease;
 }
-.kin-button:hover{
+
+.kin-button:hover {
     background-color: rgb(245, 0, 0);
 }
-.quad-button:hover{
+
+.quad-button:hover {
     background-color: rgb(255, 171, 37);
 }
-.vec-button:hover{
+
+.vec-button:hover {
     background-color: rgb(72, 175, 67);
+}
+/* Hide regular cursor when hovering over buttons */
+.button-container:hover {
+    cursor: none;
 }
 
 .mainword{
@@ -157,7 +200,45 @@ body{
 .nav-list a:hover {
     background-color: #555;
 }
+.dropdown{
+    position: relative;
+}
+.dropdown-content {
+    display: none; /* Hide dropdown by default */
+    position: absolute;
+    top: 100%; /* Position it directly below the "Convert" link */
+    left: 0;
+    background-color: white;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    min-width: 120px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px; /* Match the border-radius for a consistent look */
+    z-index: 1;
+}
 
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content li {
+    padding: 0;
+}
+
+.dropdown-content li a {
+    display: block;
+    padding: 8px 12px;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px; /* Add slight rounding for each dropdown item */
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content li a:hover {
+    background-color: #ddd; /* Background color on hover */
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {

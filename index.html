@@ -11,15 +11,21 @@
         <a href="#home">DYUP</a>
     </div>
     <nav class="navbar">
-        <ul class="nav-list"> 
-            <li><a href="convert.html">Convert</a></li>
+        <ul class="nav-list">
+            <li class="dropdown">
+            <a href="convert.html">Convert</a>
+            <ul class="dropdown-content">
+                <li><a href="kin.html">Kinematic</a></li>
+                <li><a href="vec.html">Vector</a></li>
+            </ul>
+            </li>
             <li><a href="#about">About</a></li>
         </ul>
     </nav>
     <div class="mainword">
         <a>Do You Understand Physics</a>
     </div>
-   
+    
 
     <div class="gradient-block"></div>
     <div class="black-box">
@@ -30,12 +36,17 @@
             <a>So I Made This</a>
         </div>
         <div class="button-container">
-            <a href="kin.html" class="kin-button">Kinematic</a>
-            <a href="#quad" class="quad-button">Quadratic</a>
-            <a href="#vec" class="vec-button">Vector Addition</a>
-        </div>
+            <button id="left-arrow" class="scroll-btn left">←</button>
+            <div class="buttons-wrapper">
+                <a href="kin.html" class="kin-button">Kinematic</a>
+                <a href="#quad" class="quad-button">Quadratic</a>
+                <a href="#vec" class="vec-button">Vector Addition</a>
+            </div>
+            <button id="right-arrow" class="scroll-btn right">→</button>
     </div>
-    <div class="content-filler"></div>
-    
+</div>
+<div class="content-filler"></div>
+
+<script src="script.js"></script>
 </body>
 </html>

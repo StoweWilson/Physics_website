@@ -12,12 +12,24 @@ function getInput(promptMessage) {
         const input = document.getElementById("input");
         const submitButton = document.getElementById("submit");
 
-        submitButton.onclick = () => {
+        const submitInput = () => {
             const userInput = input.value.trim();
             outputDiv.innerHTML += `> ${userInput}\n`;
             input.value = "";
+            input.removeEventListener("keydown", handleEnterKey); // Remove listener
             resolve(userInput.toLowerCase());
         };
+
+        function handleEnterKey(event){
+            if(event.key === "Enter"){
+                event.preventDefault();
+                submitInput();
+            }
+        }
+        submitButton.onclick = submitInput;
+
+        input.addEventListener("keydown", handleEnterKey);
+        
     });
 }
 // Function to get acceleration input
