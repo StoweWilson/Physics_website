@@ -33,7 +33,7 @@ function getInput(promptMessage) {
 // Function to get vector magnitude and direction
 async function getVector() {
     const magnitude = parseFloat(await getInput("Enter the vector magnitude:"));
-    const angle = parseFloat(await getInput("Enter the vector direction in degrees (0° is east, 90° is north):"));
+    const angle = parseFloat(await getInput("Enter the vector direction in degrees (0° is east, 90° is north, 270° South):"));
     
     // Convert to x and y components
     const radians = angle * (Math.PI / 180); // Convert angle to radians
@@ -64,7 +64,7 @@ async function main() {
     let addMoreVectors = "yes";
     while (addMoreVectors === "yes") {
         const vector = await getVector();
-        outputDiv.innerHTML += `Vector: Magnitude = ${vector.magnitude}, Direction = ${vector.angle}°, Components = (${vector.x.toFixed(2)}, ${vector.y.toFixed(2)})\n`;
+        outputDiv.innerHTML += `Vector: Magnitude = ${vector.magnitude}\n Direction = ${vector.angle}°\n Component X = ${vector.x.toFixed(2)}, Component Y = ${vector.y.toFixed(2)}\n`;
         
         addMoreVectors = (await getInput("Add another vector? (yes or no):")).toLowerCase();
     }
