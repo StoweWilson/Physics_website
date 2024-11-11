@@ -1,69 +1,79 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
-    font-family: 'Poppins',sans-serif;
-    background-color:white;
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
-    
+    transition: background-color 0.3s ease;
 }
-.gradient-block{
+
+.gradient-block {
     height: 30vh;
-    background: linear-gradient(to bottom,transparent,black );
+    background: linear-gradient(to bottom, transparent, black);
     width: calc(100% - 30px);
     position: relative;
     margin: 0 auto;
     padding: 15px;
-    
-    
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 0;
 }
+
 .black-box {
-    height: 1000px;
+    height: 1250px;
     background-color: black;
     width: calc(100% - 30px);
     position: relative;
-    bottom: 90px;
     padding: 15px;
     margin: 0 auto;
-    top: -5px;
+    top: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
+    overflow: visible;
+    z-index: 5;
 }
-.idontword{
+
+.idontword {
     color: white;
     font-size: 6rem;
     font-weight: bold;
     text-align: center;
     
 }
-.made{
+
+.idontword a {
+    text-decoration: none;
+    color: white;
+}
+
+
+.made {
     color: white;
     font-size: 3rem;
     font-weight: bold;
     text-align: center;
     margin-top: 5px;
-    
-}
-/* Container for the buttons */
-.button-container {
-    display: flex;
-    align-items: center;  /* Center buttons vertically */
-    justify-content: center;  /* Center buttons horizontally */
-    margin-top: 80px;
-    position: relative;
-    width: 100%; /* Ensure full width */
 }
 
-/* Add left and right scroll buttons */
+/* Button container and scrolling button styles */
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+    position: relative;
+    width: 100%;
+}
+
 .scroll-btn {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
@@ -85,18 +95,16 @@ body{
     right: 0;
 }
 
-/* Button wrapper for scrolling */
 .buttons-wrapper {
     display: flex;
-    gap: 30px;  /* Space between the buttons */
-    justify-content: flex-start; /* Align buttons from the left */
-    transition: transform 0.3s ease; /* Smooth scrolling transition */
-    width: max-content;  /* Ensure wrapper is large enough to hold all buttons */
-    overflow-x: auto; /* Enable horizontal scrolling */
-    scroll-behavior: smooth; /* Smooth scroll transition */
+    gap: 30px;
+    justify-content: flex-start;
+    transition: transform 0.3s ease;
+    width: max-content;
+    overflow-x: auto;
+    scroll-behavior: smooth;
 }
 
-/* Style individual buttons */
 .kin-button, .quad-button, .vec-button {
     display: inline-block;
     padding: 40px 40px;
@@ -120,65 +128,101 @@ body{
 .vec-button:hover {
     background-color: rgb(72, 175, 67);
 }
-/* Hide regular cursor when hovering over buttons */
+
 .button-container:hover {
     cursor: none;
 }
 
-.mainword{
+/* Main container and mainword styling */
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     position: relative;
-    margin-top: 45vh;
-    left: 60%;
+    z-index: 2;
+}
+
+.mainword {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     transform: translateX(-45%);
     white-space: nowrap;
+    z-index: 3;
 }
-.mainword a{
+
+.mainword a {
     color: black;
     font-size: 5rem;
     text-decoration: none;
     font-weight: bold;
+    transition: transform 0.2s ease, text-shadow 0.3s ease, color 0.3s ease;
 }
 
-/*.idontword a{
-    color: rgb(255, 255, 255);
-    font-size: 5rem;
-    text-decoration: none;
-    font-weight: bold;
+.glow-text {
+    color: #ff00ff;
+    text-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff, 0 0 45px #ff00ff;
 }
-/* logo/home button*/
+
+.dark-background {
+    background-color: #111;
+}
+
+#equations-container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.equation {
+    position: absolute;
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: bold;
+    pointer-events: none;
+    user-select: none;
+    transition: transform 0.3s ease-in-out, color 0.3s ease;
+}
+
 .logo {
-    position: fixed; /* Fix it to the top-left */
+    position: fixed;
     top: 20px;
-    left: 20px; /* Adjust left spacing if needed */
+    left: 20px;
     z-index: 10;
 }
 
-.logo a{
+.logo a {
     color: black;
     font-size: 2rem;
     text-decoration: none;
     font-weight: bold;
 }
-.logo a:hover{
+
+.logo a:hover {
     color: blanchedalmond;
 }
-.nav-list{
+
+/* Navbar */
+.nav-list {
     list-style-type: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
+
 .nav-list a {
     text-decoration: none;
     font-weight: 600;
-    color:black;
+    color: black;
     padding: 10px 20px;
-    background-color:rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
     border-radius: 10px;
     transition: background-color 0.3s ease;
 }
-.navbar{
+
+.navbar {
     position: fixed;
     top: 10px;
     left: 50%;
@@ -192,7 +236,6 @@ body{
     z-index: 5;
 }
 
-
 .nav-list li {
     margin: 0 5px;
 }
@@ -200,13 +243,15 @@ body{
 .nav-list a:hover {
     background-color: #555;
 }
-.dropdown{
+
+.dropdown {
     position: relative;
 }
+
 .dropdown-content {
-    display: none; /* Hide dropdown by default */
+    display: none;
     position: absolute;
-    top: 100%; /* Position it directly below the "Convert" link */
+    top: 100%;
     left: 0;
     background-color: white;
     padding: 0;
@@ -214,11 +259,10 @@ body{
     list-style-type: none;
     min-width: 120px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 10px; /* Match the border-radius for a consistent look */
+    border-radius: 10px;
     z-index: 1;
 }
 
-/* Show dropdown on hover */
 .dropdown:hover .dropdown-content {
     display: block;
 }
@@ -232,18 +276,18 @@ body{
     padding: 8px 12px;
     color: black;
     text-decoration: none;
-    border-radius: 5px; /* Add slight rounding for each dropdown item */
+    border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 .dropdown-content li a:hover {
-    background-color: #ddd; /* Background color on hover */
+    background-color: #ddd;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column
+        flex-direction: column;
     }
 
     .nav-list {

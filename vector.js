@@ -64,7 +64,7 @@ async function main() {
     let addMoreVectors = "yes";
     while (addMoreVectors === "yes") {
         const vector = await getVector();
-        outputDiv.innerHTML += `Vector: Magnitude = ${vector.magnitude}\n Direction = ${vector.angle}°\n Component X = ${vector.x.toFixed(2)}, Component Y = ${vector.y.toFixed(2)}\n`;
+        outputDiv.innerHTML += `Vector:\n Magnitude = ${vector.magnitude}\n Direction = ${vector.angle}°\n Component X = ${vector.x.toFixed(2)}, Component Y = ${vector.y.toFixed(2)}\n`;
         
         addMoreVectors = (await getInput("Add another vector? (yes or no):")).toLowerCase();
     }
