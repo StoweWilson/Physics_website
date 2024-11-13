@@ -153,3 +153,64 @@ window.addEventListener('scroll', function () {
     }
 });
 
+window.addEventListener('scroll', function () {
+    const idontword = document.querySelector('.idontword');
+    const scrollPosition = window.scrollY;
+
+    // Set the thresholds for movement and opacity
+    const startReveal = 200; // Scroll position to start showing
+    const stopReveal = 600;  // Position to stop movement
+
+    if (scrollPosition > startReveal && scrollPosition < stopReveal) {
+        // Reveal and move it into view as we scroll down
+        idontword.style.opacity = 1;
+        idontword.style.bottom = '300px';
+    } else if (scrollPosition >= stopReveal) {
+        // Once past the stopReveal threshold, keep it in view
+        idontword.style.bottom = '755px';
+        idontword.style.opacity = 1;
+    } else {
+        // If scrolled above the startReveal point, hide it again
+        idontword.style.opacity = 0;
+        idontword.style.bottom = '-100px';
+    }
+});
+
+window.addEventListener('scroll', function () {
+    const idontword = document.querySelector('.made');
+    const scrollPosition = window.scrollY;
+
+    // Set the thresholds for movement and opacity
+    const startReveal = 500; // Scroll position to start showing
+    const stopReveal = 600;  // Position to stop movement
+
+    if (scrollPosition > startReveal && scrollPosition < stopReveal) {
+        // Reveal and move it into view as we scroll down
+        idontword.style.opacity = 1;
+        idontword.style.bottom = '500px';
+    } else if (scrollPosition >= stopReveal) {
+        // Once past the stopReveal threshold, keep it in view
+        idontword.style.bottom = '700px';
+        idontword.style.opacity = 1;
+    } else {
+        // If scrolled above the startReveal point, hide it again
+        idontword.style.opacity = 0;
+        idontword.style.bottom = '-100px';
+    }
+});
+
+window.addEventListener('scroll', function () {
+    const arrow = document.querySelector('.scroll-arrow');
+    const targetButton = document.querySelector('.kin-button'); // Ensure this selector matches your button
+
+    // Check if the button is visible in the viewport
+    const buttonPosition = targetButton.getBoundingClientRect().top;
+    const viewportHeight = window.innerHeight;
+
+    // Hide the arrow when it's near the button (e.g., 50px within)
+    if (buttonPosition < viewportHeight - 50) { // Adjust 50 to control hide threshold
+        arrow.style.opacity = 0;
+    } else {
+        arrow.style.opacity = 1;
+    }
+});

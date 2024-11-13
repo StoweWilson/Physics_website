@@ -39,7 +39,7 @@ body {
     align-items: center;
     border-radius: 5px;
     overflow: visible;
-    z-index: 5;
+    z-index: 4;
 }
 
 .idontword {
@@ -47,6 +47,13 @@ body {
     font-size: 6rem;
     font-weight: bold;
     text-align: center;
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.95);
+    opacity: 0;
+    transition: opacity 0.3s, bottom 0.5s ease;
+    z-index: 10;
     
 }
 
@@ -61,7 +68,24 @@ body {
     font-size: 3rem;
     font-weight: bold;
     text-align: center;
-    margin-top: 5px;
+    position: fixed;
+    bottom: -90px;
+    transform: translateX(3%) scale(0.95);
+    opacity: 0;
+    transition: opacity 0.3s, bottom 0.5s ease;
+    z-index: 10;
+}
+
+.scroll-arrow {
+    font-size: 3rem;
+    color: white;
+    position: fixed;
+    bottom: 0px; /* Adjust this based on where you want it to start */
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.3s ease;
+    opacity: 1;
+    z-index: 10;
 }
 
 /* Button container and scrolling button styles */
@@ -138,7 +162,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 90vh;
     position: relative;
     z-index: 2;
 }
@@ -201,7 +225,7 @@ body {
 }
 
 .logo a:hover {
-    color: blanchedalmond;
+    color: rgb(46, 132, 253);
 }
 
 /* Navbar */

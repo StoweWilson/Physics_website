@@ -40,6 +40,8 @@ body{
     overflow-y: auto;
     padding-right: 10px;
     font: 'Poppins';
+    font-size: 20px;
+    font-weight: 550;
 }
 #input-container{
     display: flex;
@@ -93,7 +95,7 @@ body{
     font-weight: bold;
 }
 .logo a:hover{
-    color: blanchedalmond;
+    color: rgb(46, 132, 253);
 }
 
 @media(max-width: 768px){

@@ -75,7 +75,7 @@ body{
     background-color: rgb(255, 174, 0);
 }
 .logo a:hover{
-    color: blanchedalmond;
+    color: rgb(46, 132, 253);
 }
 
 @media (max-width: 768px){
