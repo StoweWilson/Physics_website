@@ -70,7 +70,7 @@ body {
     text-align: center;
     position: fixed;
     bottom: -90px;
-    transform: translateX(3%) scale(0.95);
+    transform: translateX(2%) scale(0.95);
     opacity: 0;
     transition: opacity 0.3s, bottom 0.5s ease;
     z-index: 10;
