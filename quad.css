@@ -1,0 +1,134 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+    padding: 20px;
+    margin: 0;
+    overflow-y: hidden;
+}
+.title{
+    font-family: 'Poppins', sans-serif;
+    color: #000000;
+    font-size: 2rem; /* Adjust the font size as needed */
+    text-align: center;
+    margin: 5px 0;
+
+}
+#terminal {
+    position: absolute;
+    top: 125px;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    border: 2.5px solid rgb(0, 0, 0);
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    background-color: #cfcfcf;
+    
+}
+
+#output {
+    white-space: pre-wrap; /* Maintain formatting */
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 10px;
+    font: 'Poppins';
+    font-size: 20px;
+    font-weight: 550;
+}
+#input-container{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#input {
+    width: calc(100% - 90px);
+    padding: 10px;
+    border: none;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 10px;
+    border-bottom: 3px solid #000000;
+    font-size: 14px;
+}
+
+
+#submit {
+    padding: 12px;
+    background-color: rgb(255, 255, 255); /* Green button */
+    border: none;
+    cursor: pointer;
+    width: 70px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 15px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+#submit:hover {
+    background-color: rgb(97, 175, 88); /* Darker green on hover */
+}
+
+.logo {
+    position: fixed; /* Fix it to the top-left */
+    top: 20px;
+    left: 20px; /* Adjust left spacing if needed */
+    z-index: 10;
+}
+
+.logo a{
+    color: black;
+    font-size: 2rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+.logo a:hover{
+    color: rgb(46, 132, 253);
+}
+
+@media(max-width: 768px){
+
+    .title{
+        font-size: 1.5 rem;
+    }
+
+    #terminal{
+        position: static;
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    #input-container{
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #input{
+        width: 100%;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    #submit{
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .logo a {
+        font-size: 1.5rem;
+    }
+}
