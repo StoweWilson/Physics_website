@@ -66,7 +66,7 @@ async function quad(){
             break;
         } else if (c_choice == "no") {
             c = 0;
-            break;
+            break; 
         } else {
             await getInput("Invaild input. Please enter 'yes' or 'no");
         }
