@@ -6,3 +6,5 @@ Website Goals:
 3. help solve and explain vector addition
 4. give it a working domain
 5. help solve projectile motion problems
+6. solve quadratic problem
+7. make a better nav bar
