@@ -16,6 +16,11 @@ body {
     overflow-x: hidden;
 }
 
+*{
+    word-wrap: break-word; /* Allows long words to break */
+    overflow-wrap: break-word; /* Same as word-wrap for better support */
+}
+
 /* Navbar */
 .logo {
     position: fixed; /* Fix it to the top-left */
@@ -53,7 +58,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 35vh;
+    height: auto;
     width: calc(100% - 30px);
     background: #203354;;
     border: 5px solid #fefbea;
@@ -92,7 +97,7 @@ body {
     color: #fefbea;
     font-size: 7rem;
     font-weight: 900;
-    bottom: 50px;
+    bottom: 0px;
 }
 .def-what{
     position: relative;
@@ -106,7 +111,7 @@ body {
     flex-direction: column; 
     justify-content: flex-start; 
     align-items: flex-start; 
-    height: 35vh; 
+    height: auto; 
     width: calc(100% - 30px); 
     background: #fefbea; 
     border: 5px solid #203354;
@@ -260,9 +265,11 @@ button:hover {
         flex-direction: column;
         align-items: center;
     }
+
     .friction-problem-solver {
         padding: 20px;
         margin: 20px auto;
+        width: 100%;
     }
 
     .friction-problem-solver h2 {
@@ -272,7 +279,22 @@ button:hover {
     button {
         width: 100%;
     }
+
+    .what-is-it-container {
+        width: calc(100% - 30px);
+        padding: 15px;
+        margin-top: 20px;
+    }
+
+    .header {
+        font-size: 3rem;
+    }
+
+    .what {
+        font-size: 5rem;
+    }
 }
+
 /* Animations */
 @keyframes fadeIn {
     from {
