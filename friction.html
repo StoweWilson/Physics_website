@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friction - Physics Calculator</title>
+    <link rel="stylesheet" href="friction.css">
+</head>
+<body>
+<div class="logo">
+    <a href="index.html">DYUP</a>
+</div>
+<div class="header">Understanding Friction</div>
+<div class="container">
+    <div class="what-is-it-container">
+        <div class="first-paragraph">
+            <div class="what">What is it?</div>
+            <div class = "def-what">Friction is the resistance to motion when two objects are in contact. It depends on the type of surfaces in contact and the normal force pressing them together.</div>
+        </div>
+    </div>
+        <div class="formula-container">
+            <div class="formula-header">Formulas</div>
+            <div class="formula-words">
+            <p><strong>formula for frictional force (F<sub>f</sub>) is:</strong></p>
+            <pre class="formula-box">F<sub>f</sub> = μ * F<sub>n</sub></pre>
+            <p><strong>Where:</strong></p>
+            <ul class="formula-list">
+                <li><span class="highlight">μ</span>: Coefficient of friction</li>
+                <li><span class = "highlight">F</span><sub>n</sub>: Normal force (force perpendicular to the surfaces in contact)</li>
+            </ul>
+        
+            <p><strong>There are two types of friction:</strong></p>
+            <ul class = "formula-list">
+                <li><strong>Static Friction:</strong> Friction between objects that are not moving relative to each other.</li>
+                <li><strong>Kinetic Friction:</strong> Friction between objects that are sliding past each other.</li>
+            </ul>
+        </div>
+        </div>
+    </div>
+    <section class="friction-problem-solver"> 
+        <h2>Friction Calculator</h2>
+            <form id="frictionForm">
+                <div class="form-group">
+                    <label for="coefficient">Coefficient of Friction (μ):</label>
+                    <input type="number" id="coefficient" name="coefficient" step="any" required placeholder="e.g,0.3">
+                </div>
+
+                <div class="form-group">
+                    <label for="normal-force">Normal Force (F<sub>n</sub>):</label>
+                    <input type="number" id="normal-force" name="normal-force" placeholder="e.g., 50">
+                </div>
+
+                <div class="form-group">
+                    <label for="mass">Mass (m) (kg):</label>
+                    <input type="number" id="mass" name="mass" step="any" placeholder="e.g., 10">
+                </div>
+        
+                <div class="form-group">
+                    <label for="angle">Inclined Angle (θ) (degrees):</label>
+                    <input type="number" id="angle" name="angle" step="any"  placeholder="e.g., 30">
+                </div>
+        
+                <div class="form-group">
+                    <label for="applied-force">Applied Force (F<sub>a</sub>) (optional):</label>
+                    <input type="number" id="applied-force" name="applied-force" step="any" placeholder="e.g., 20">
+                </div>
+        
+                <div class="form-group">
+                    <label for="kinetic">Is it kinetic friction?</label>
+                    <input type="checkbox" id="kinetic" name="kinetic">
+                </div>
+        
+                <button type="submit" class="btn">Calculate</button>
+            </form>
+
+            <p id="result" class="result-text"></p>
+    </section>
+
+    <script src="friction.js"></script>
+</body>
+</html>

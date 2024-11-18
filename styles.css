@@ -187,7 +187,7 @@ body {
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 10rem;
+    font-size: 7rem;
     color: #203354;
     animation: bounce 2s infinite;
     cursor: pointer;
@@ -274,7 +274,7 @@ body {
     text-align: center;
 
 }
-.kin-button,.quad-button,.vec-button{
+.kin-button,.quad-button,.vec-button,.fri-button{
     display: inline-flex;
     padding: 35px 35px;
     border: 5px solid #fefbea;
@@ -379,6 +379,8 @@ body {
         height: 25px;
         font-size: 25px; /* Smaller arrows on mobile */
     }
+
+   
 
    
 
