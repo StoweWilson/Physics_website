@@ -1,5 +1,3 @@
-// JavaScript version of the C++ Kinematic Calculator
-
 // Initialize the variables
 let dis = 0, acc = 0, vi = 0, vf = 0, t = 0;
 
@@ -29,9 +27,9 @@ function getInput(promptMessage) {
         submitButton.onclick = submitInput;
 
         input.addEventListener("keydown", handleEnterKey);
-        
     });
 }
+
 // Function to get acceleration input
 async function findAcc() {
     let acc_choice;
@@ -41,19 +39,13 @@ async function findAcc() {
             acc = parseFloat(await getInput("Enter the acceleration:"));
             break;
         } else if (acc_choice === "no") {
-            await getInput("To use kinematic equations, you need constant velocity; consider splitting it into two parts or checking if acceleration is due to gravity (press submit to continue).");
-            acc = parseFloat(await getInput("Enter the acceleration:"));
-            if (!isNaN(acc)) {
-                break; // Exit the loop if a valid acceleration is entered
-            } else {
-                await getInput("Invalid acceleration input. Please enter a numeric value.");
-            }
+            acc = parseFloat(await getInput("Enter the acceleration (if known):"));
+            break;
         } else {
             await getInput("Invalid input. Please enter 'yes' or 'no'.");
         }
     }
 }
-
 
 // Function to get distance input
 async function findDistance() {
@@ -119,144 +111,133 @@ async function findTime() {
         }
     }
 }
+
+// Function to calculate the missing kinematic quantities
 async function calculateKinematicQuantities() {
     const outputDiv = document.getElementById("output");
-    let find_choice;
-    let no_find;
-    find_choice = (await getInput("what is your problem trying to find (d,a,vf,t,vi):")).trim().toLowerCase();
-    no_find = (await getInput("what is your problem NOT trying to find (d,a,vf,t,vi):")).trim().toLowerCase();
+    let find_choice, no_find;
 
-    if (find_choice === "d"){
-        if(no_find === "a"){
-            d = (.5 * (vi + vf) * t);
-             outputDiv.innerHTML += `Equation: D = 1/2(Vi + Vf)T \n`;
-             outputDiv.innerHTML += `Calculated Final Distance: ${d}\n`;
-        }else if (no_find === "vf"){
-            d = (vi * t) + ((.5 * a) * (t * t));
-            outputDiv.innerHTML += `Equation: D = ViT + 1/2AT^2 \n`;
-            outputDiv.innerHTML += `Calculated Final Distance: ${d}\n`;
-        }else if(no_find === "vi"){
-            d = (vf * t) - ((.5 * a)* (t * t));
-            outputDiv.innerHTML += `Equation: D = VfT - 1/2AT^2 \n`;
-            outputDiv.innerHTML += `Calculated Final Distance: ${d}\n`;
-        }else if (no_find === "t"){
-            d = ((vf * vf)-(vi *vi))/(2*a);
-            outputDiv.innerHTML += `Equation: Vf^2 = Vi^2 + 2aD \n`;
-            outputDiv.innerHTML += `Calculated Final Distance: ${d}\n`;
-        }else{
-            outputDiv.innerHTML += `Not engough information Given\n`;
-        }
-    
-    }else if (find_choice === "vf"){
-        if(no_find === "d"){
-            vf = vi + (a*t);
-            outputDiv.innerHTML += `Equation: Vf = Vi + AT \n`;
-            outputDiv.innerHTML += `Calculated Final Velocity: ${vf}\n`;
-        }else if(no_find == "t"){
-            vf = math.sqrt(((vi *vi)+ ((2 *a)*d)));
-            outputDiv.innerHTML += `Equation: Vf^2 = Vi^2  + 2AD \n`;
-            outputDiv.innerHTML += `Calculated Final Velocity: ${vf}\n`;
-        }else if (no_find === "a"){
-            vf = ((2* d)/t) - vi;
-            outputDiv.innerHTML += `Equation: Equation: D = 1/2(Vi + Vf)T \n`;
-            outputDiv.innerHTML += `Calculated Final Velocity: ${vf}\n`;
-        }else if(no_find == "vi"){
-            vf = (d/t)+ ((.5 *a)*t);
-            outputDiv.innerHTML += `Equation: Equation: D = VfT - 1/2AT^2 \n`;
-            outputDiv.innerHTML += `Calculated Final Velocity: ${vf}\n`;
-        }else{
-            outputDiv.innerHTML += `Not engough information Given\n`;
-        }
-    }else if (find_choice === "t") {
-        if (no_find === "d") {
-            t = (vf - vi) / a;
-            outputDiv.innerHTML += `Equation: T = (Vf - Vi) / A \n`;
-            outputDiv.innerHTML += `Calculated Time: ${t}\n`;
+    // Prompt for what the user wants to find and what they don't want to find
+    find_choice = (await getInput("What is your problem trying to find? (d, a, vf, t, vi)")).trim().toLowerCase();
+    no_find = (await getInput("What is your problem NOT trying to find? (d, a, vf, t, vi)")).trim().toLowerCase();
+
+    // Solve for Distance (d)
+    if (find_choice === "d") {
+        if (no_find === "a") {
+            dis = (vi * t) + (0.5 * acc * t * t);
+            outputDiv.innerHTML += `Equation: D = ViT + 1/2AT^2\n`;
+            outputDiv.innerHTML += `Calculated Distance: ${dis}\n`;
         } else if (no_find === "vf") {
-            t = Math.sqrt((2 * d) / a);
-            outputDiv.innerHTML += `Equation: T = √(2D/A) \n`;
-            outputDiv.innerHTML += `Calculated Time: ${t}\n`;
+            dis = (vf * t) - (0.5 * acc * t * t);
+            outputDiv.innerHTML += `Equation: D = VfT - 1/2AT^2\n`;
+            outputDiv.innerHTML += `Calculated Distance: ${dis}\n`;
         } else if (no_find === "vi") {
-            t = (2 * d) / (vi + vf);
-            outputDiv.innerHTML += `Equation: T = 2D / (Vi + Vf) \n`;
-            outputDiv.innerHTML += `Calculated Time: ${t}\n`;
-        } else if (no_find === "a") {
-            t = (2 * d) / (vi + vf); // Using D = 1/2(Vi + Vf)T
-            outputDiv.innerHTML += `Equation: T = 2D / (Vi + Vf) \n`;
-            outputDiv.innerHTML += `Calculated Time: ${t}\n`;
-        } else {
-            outputDiv.innerHTML += `Not enough information Given\n`;
-        }
-    } else if (find_choice === "a") {
-        if (no_find === "d") {
-            a = (vf - vi) / t;
-            outputDiv.innerHTML += `Equation: A = (Vf - Vi) / T \n`;
-            outputDiv.innerHTML += `Calculated Acceleration: ${a}\n`;
-        } else if (no_find === "vf") {
-            a = (d - vi * t) / (0.5 * t * t);
-            outputDiv.innerHTML += `Equation: A = (D - ViT) / (0.5T^2) \n`;
-            outputDiv.innerHTML += `Calculated Acceleration: ${a}\n`;
-        } else if (no_find === "vi") {
-            a = (d - vf * t) / (0.5 * t * t);
-            outputDiv.innerHTML += `Equation: A = (D - VfT) / (0.5T^2) \n`;
-            outputDiv.innerHTML += `Calculated Acceleration: ${a}\n`;
+            dis = (vf * t) - (0.5 * acc * t * t);
+            outputDiv.innerHTML += `Equation: D = VfT - 1/2AT^2\n`;
+            outputDiv.innerHTML += `Calculated Distance: ${dis}\n`;
         } else if (no_find === "t") {
-            a = (vf * vf - vi * vi) / (2 * d);
-            outputDiv.innerHTML += `Equation: A = (Vf^2 - Vi^2) / (2D) \n`;
-            outputDiv.innerHTML += `Calculated Acceleration: ${a}\n`;
+            dis = ((vf * vf) - (vi * vi)) / (2 * acc);
+            outputDiv.innerHTML += `Equation: D = (Vf^2 - Vi^2) / 2A\n`;
+            outputDiv.innerHTML += `Calculated Distance: ${dis}\n`;
         } else {
-            outputDiv.innerHTML += `Not enough information Given\n`;
+            outputDiv.innerHTML += `Not enough information given.\n`;
         }
-    } else if (find_choice === "vi") {
-        if (no_find === "d") {
-            vi = vf - (a * t);
-            outputDiv.innerHTML += `Equation: Vi = Vf - AT \n`;
-            outputDiv.innerHTML += `Calculated Initial Velocity: ${vi}\n`;
-        } else if (no_find === "vf") {
-            vi = d / t - (0.5 * a * t);
-            outputDiv.innerHTML += `Equation: Vi = D / T - 0.5AT \n`;
-            outputDiv.innerHTML += `Calculated Initial Velocity: ${vi}\n`;
-        } else if (no_find === "a") {
-            vi = (2 * d) / t - vf;
-            outputDiv.innerHTML += `Equation: Vi = (2D / T) - Vf \n`;
-            outputDiv.innerHTML += `Calculated Initial Velocity: ${vi}\n`;
-        } else if (no_find === "t") {
-            vi = (d - (0.5 * a * t)) / t;
-            outputDiv.innerHTML += `Equation: Vi = (D - 0.5AT^2) / T \n`;
-            outputDiv.innerHTML += `Calculated Initial Velocity: ${vi}\n`;
-        } else {
-            outputDiv.innerHTML += `Not enough information Given\n`;
-        }
-    } else {
-        outputDiv.innerHTML += `Invalid choice. Please enter a valid quantity to find.\n`;
     }
-    // Call main() to reset and start over
-    outputDiv.innerHTML += `\nCalculations complete. Starting over...\n`;
-    await getInput("press submit to continue\n");
 
+    // Solve for Final Velocity (vf)
+    else if (find_choice === "vf") {
+        if (no_find === "d") {
+            vf = vi + (acc * t);
+            outputDiv.innerHTML += `Equation: Vf = Vi + AT\n`;
+            outputDiv.innerHTML += `Calculated Final Velocity: ${vf}\n`;
+        } else if (no_find === "t") {
+            vf = Math.sqrt((vi * vi) + (2 * acc * dis));
+            outputDiv.innerHTML += `Equation: Vf^2 = Vi^2 + 2AD\n`;
+            outputDiv.innerHTML += `Calculated Final Velocity: ${vf}\n`;
+        } else if (no_find === "a") {
+            vf = (dis / t) - (0.5 * acc * t);
+            outputDiv.innerHTML += `Equation: Vf = (D / T) - (0.5AT)\n`;
+            outputDiv.innerHTML += `Calculated Final Velocity: ${vf}\n`;
+        } else if (no_find === "vi") {
+            vf = dis / t + (0.5 * acc * t);
+            outputDiv.innerHTML += `Equation: Vf = D / T + 0.5AT\n`;
+            outputDiv.innerHTML += `Calculated Final Velocity: ${vf}\n`;
+        } else {
+            outputDiv.innerHTML += `Not enough information given.\n`;
+        }
+    }
 
+    // Solve for Time (t)
+    else if (find_choice === "t") {
+        if (no_find === "d") {
+            t = (vf - vi) / acc;
+            outputDiv.innerHTML += `Equation: T = (Vf - Vi) / A\n`;
+            outputDiv.innerHTML += `Calculated Time: ${t}\n`;
+        } else if (no_find === "vf") {
+            t = Math.sqrt(2 * dis / acc);
+            outputDiv.innerHTML += `Equation: T = √(2D / A)\n`;
+            outputDiv.innerHTML += `Calculated Time: ${t}\n`;
+        } else if (no_find === "vi") {
+            t = dis / (0.5 * acc * t);
+            outputDiv.innerHTML += `Equation: T = 2D / (Vi + Vf)\n`;
+            outputDiv.innerHTML += `Calculated Time: ${t}\n`;
+        } else {
+            outputDiv.innerHTML += `Not enough information given.\n`;
+        }
+    }
+
+    // Solve for Acceleration (a)
+    else if (find_choice === "a") {
+        if (no_find === "d") {
+            acc = (vf - vi) / t;
+            outputDiv.innerHTML += `Equation: A = (Vf - Vi) / T\n`;
+            outputDiv.innerHTML += `Calculated Acceleration: ${acc}\n`;
+        } else if (no_find === "vf") {
+            acc = (dis - (vi * t)) / (0.5 * t * t);
+            outputDiv.innerHTML += `Equation: A = (D - ViT) / (0.5T^2)\n`;
+            outputDiv.innerHTML += `Calculated Acceleration: ${acc}\n`;
+        } else if (no_find === "vi") {
+            acc = (dis - (vf * t)) / (0.5 * t * t);
+            outputDiv.innerHTML += `Equation: A = (D - VfT) / (0.5T^2)\n`;
+            outputDiv.innerHTML += `Calculated Acceleration: ${acc}\n`;
+        } else {
+            outputDiv.innerHTML += `Not enough information given.\n`;
+        }
+    }
+
+    // Solve for Initial Velocity (vi)
+    else if (find_choice === "vi") {
+        if (no_find === "d") {
+            vi = vf - (acc * t);
+            outputDiv.innerHTML += `Equation: Vi = Vf - AT\n`;
+            outputDiv.innerHTML += `Calculated Initial Velocity: ${vi}\n`;
+        } else if (no_find === "vf") {
+            vi = dis / t - (0.5 * acc * t);
+            outputDiv.innerHTML += `Equation: Vi = D / T - 0.5AT\n`;
+            outputDiv.innerHTML += `Calculated Initial Velocity: ${vi}\n`;
+        } else if (no_find === "a") {
+            vi = (dis / t) - (0.5 * acc * t);
+            outputDiv.innerHTML += `Equation: Vi = (D / T) - 0.5AT\n`;
+            outputDiv.innerHTML += `Calculated Initial Velocity: ${vi}\n`;
+        } else {
+            outputDiv.innerHTML += `Not enough information given.\n`;
+        }
+    }
+
+    // If no known choice was made
+    else {
+        outputDiv.innerHTML += `Please enter a valid option. Choices: d, a, vf, t, vi\n`;
+    }
 }
 
-// Main function to gather inputs
-async function main() { 
-    const outputDiv = document.getElementById("output");
-    outputDiv.innerHTML = "Physics Kinematic Calculator 1.0\n";
-
+// Initialize the input prompt and start solving kinematic problem
+async function startKinematicProblem() {
+    await getInput("Welcome to the Kinematic Equation Solver. Please enter 'start' to begin.");
     await findAcc();
     await findDistance();
     await findVelocity();
     await findTime();
-    
-    
-
-    
-    outputDiv.innerHTML += `\nYour Inputs:\nDistance: ${dis}\nAcceleration: ${acc}\nInitial Velocity: ${vi}\nFinal Velocity: ${vf}\nTime: ${t}\n`;
-    
     await calculateKinematicQuantities();
-    await main();
 }
 
-// Run the main function when the page is loaded
-document.addEventListener("DOMContentLoaded", () => {
-    main();
-});
+startKinematicProblem();

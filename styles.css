@@ -14,12 +14,13 @@ a{
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #faf8ef;
-    min-height: 100vh;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
     transition: background-color 0.3s ease;
 }
+
 .logo {
     position: fixed; /* Fix it to the top-left */
     top: 20px;
@@ -151,7 +152,7 @@ body {
 }
 .main-do{
     position: relative;
-    font-size: 11rem;
+    font-size: 10vw;
     font-weight: 900;
     right: 360px;
     top: 175px;
@@ -337,54 +338,32 @@ body {
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-    /* Main Section Font Size */
     .idontword {
-        font-size: 10rem;
+        font-size: 10vw;
     }
+
     .made {
-        font-size: 5rem;
+        font-size: 5vw;
     }
 
     .main-do, .main-you, .main-understand, .main-Physics {
-        font-size: 12vw;
-        top: -10vh; /* Adjusted for consistency */
-        
-    }
-    .main-do{
-        left: 5px;
+        font-size: 10vw;
+        top: -10vh;
     }
 
-    .main-Physics{
-        font-size: 18vw;
-    }
-
-    .main-understand {
-        right: 5px; /* Keeps positioning consistent */
-    }
-
-    /* Button Container */
     .buttons-wrapper {
-        display: flex;
-        justify-content: center;
         gap: 10px;
-        width: 100%;
-        overflow-x:scroll;
     }
 
-    /* Buttons */
     .kin-button, .quad-button, .vec-button {
         padding: 5px;
-        min-width: 100%;
+        min-width: 100px;
     }
 
     .scroll-btn-left, .scroll-btn-right {
         width: 25px;
         height: 25px;
-        font-size: 25px; /* Smaller arrows on mobile */
+        font-size: 25px;
     }
-
-   
-
-   
-
 }
+    

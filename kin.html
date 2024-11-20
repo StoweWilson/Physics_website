@@ -2,23 +2,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kinematic Calculator 1.0</title>
+    <title>Kinematic Calculator</title>
     <link rel="stylesheet" href="kin.css" />
 </head>
 <body>
     <div class="logo">
         <a href="index.html">DYUP</a>
     </div>
-    <div class="title">
-        <h1>Kinematic Calculator 1.0</h1>
+    <div class="header">Understanding Kinematic</div>
+    <div  class="container">
+
+        <div class="what-is-it-container">
+            <div class="first-paragraph">
+                <div class="what">What is it?</div>
+                <div class="def-what">
+                    Kinematic is the study of motion without considering the forces that cause it.It focuses on displacement, velocity, acceleration, and time.
+                </div>
+            </div>
+        </div>
+
+        <div class="concepts-container">
+            <div class="concepts-header">Key Concepts</div>
+            <div class="concepts-content">
+                <ul>
+                    <li><strong>Displacement (Δx):</strong> The change in position of an object.</li>
+                    <li><strong>Velocity (v):</strong> The rate of change of displacement.</li>
+                    <li><strong>Acceleration (a):</strong> The rate of change of velocity.</li>
+                    <li><strong>Time (t):</strong> The duration of motion.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="formula-container">
+            <div class="formula-header">Kinematic Equations</div>
+            <div class="formula-words">
+                <p><strong>1. Final Velocity:</strong></p>
+                <pre class="formula-box">v = v<sub>i</sub> + a * t</pre>
+                <p><strong>2. Displacement:</strong></p>
+                <pre class="formula-box">Δx = v<sub>i</sub> * t + 0.5 * a * t²</pre>
+                <p><strong>3. Final Velocity Squared:</strong></p>
+                <pre class="formula-box">v² = v<sub>i</sub>² + 2 * a * Δx</pre>
+                <p><strong>4. Average Velocity:</strong></p>
+                <pre class="formula-box">v<sub>avg</sub> = (v + v<sub>i</sub>) / 2</pre>
+            </div>
+        </div>
+
+        <section class="kinematics-calculator">
+            <h2>Kinematic Calculator</h2>
+            <form id="kinematicForm">
+                <div class="form-group">
+                    <label for="initial-velocity">Initial Velocity (v<sub>i</sub>) (m/s):</label>
+                    <input type="number" id="initial-velocity" name="initial-velocity" step="any" placeholder="e.g., 10">
+                </div>
+                <div class="form-group">
+                    <label for="final-velocity">Final Velocity (v) (m/s):</label>
+                    <input type="number" id="final-velocity" name="final-velocity" step="any" placeholder="e.g., 20">
+                </div>
+                <div class="form-group">
+                    <label for="acceleration">Acceleration (a) (m/s²):</label>
+                    <input type="number" id="acceleration" name="acceleration" step="any" placeholder="e.g., 5">
+                </div>
+                <div class="form-group">
+                    <label for="time">Time (t) (s):</label>
+                    <input type="number" id="time" name="time" step="any" placeholder="e.g., 4">
+                </div>
+                <div class="form-group">
+                    <label for="displacement">Displacement (Δx) (m):</label>
+                    <input type="number" id="displacement" name="displacement" step="any" placeholder="e.g., 50">
+                </div>
+                <button type="submit" class="btn">Calculate</button>
+            </form>
+            <p id="result" class="result-text"></p>
+        </section>
     </div>
-<div id="terminal">
-    <div id="output"></div>
-    <div id="input-container">
-        <input type="text" id="input" placeholder="Type your answer here..." autofocus>
-        <button id="submit">Submit</button>
-    </div>
-</div>
+
+
     <script src="kinematic.js"></script>
 </body>
 </html>
