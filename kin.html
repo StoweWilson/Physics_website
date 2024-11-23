@@ -12,30 +12,40 @@
     <div class="header">Understanding Kinematic</div>
     <div  class="container">
 
-        <div class="what-is-it-container">
+        <section class="what-is-it-container">
             <div class="first-paragraph">
-                <div class="what">What is it?</div>
-                <div class="def-what">
-                    Kinematic is the study of motion without considering the forces that cause it.It focuses on displacement, velocity, acceleration, and time.
+                <h2 class="what">What is it?</h2>
+                <p class="def-what">
+                    Kinematics is the study of motion without considering the forces causing it. It focuses on quantities like displacement, velocity, acceleration, and time. The key equations, often called the kinematic equations, help describe the motion of objects under constant acceleration.
+                </p>
+            </div>
+        </section>
+
+        <section class="concepts-container">
+            <h2 class="concepts-header">Key Concepts</h2>
+            <div class="concepts-content">
+                <div class="concept-item">
+                    <h3>Displacement (Δx)</h3>
+                    <p> The change in position of an object.<p>
+                </div>
+                <div class="concept-item">
+                    <h3>Velocity (v)</h3> 
+                    <p>The rate of change of displacement.</p>
+                </div>
+                <div class="concept-item">
+                    <h3>Acceleration (a)</h3>
+                    <p>The rate of change of velocity.</p>
+                </div>
+                <div class="concept-item">
+                    <h3>Time (t)</h3>
+                    <p>The duration of motion.</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="concepts-container">
-            <div class="concepts-header">Key Concepts</div>
-            <div class="concepts-content">
-                <ul>
-                    <li><strong>Displacement (Δx):</strong> The change in position of an object.</li>
-                    <li><strong>Velocity (v):</strong> The rate of change of displacement.</li>
-                    <li><strong>Acceleration (a):</strong> The rate of change of velocity.</li>
-                    <li><strong>Time (t):</strong> The duration of motion.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="formula-container">
-            <div class="formula-header">Kinematic Equations</div>
-            <div class="formula-words">
+        <section class="formula-container">
+            <h2 class="formula-header">Kinematic Equations</h2>
+            <div class="formula-content">
                 <p><strong>1. Final Velocity:</strong></p>
                 <pre class="formula-box">v = v<sub>i</sub> + a * t</pre>
                 <p><strong>2. Displacement:</strong></p>
@@ -45,38 +55,45 @@
                 <p><strong>4. Average Velocity:</strong></p>
                 <pre class="formula-box">v<sub>avg</sub> = (v + v<sub>i</sub>) / 2</pre>
             </div>
-        </div>
+        </section>
 
         <section class="kinematics-calculator">
             <h2>Kinematic Calculator</h2>
             <form id="kinematicForm">
-                <div class="form-group">
-                    <label for="initial-velocity">Initial Velocity (v<sub>i</sub>) (m/s):</label>
-                    <input type="number" id="initial-velocity" name="initial-velocity" step="any" placeholder="e.g., 10">
-                </div>
-                <div class="form-group">
-                    <label for="final-velocity">Final Velocity (v) (m/s):</label>
-                    <input type="number" id="final-velocity" name="final-velocity" step="any" placeholder="e.g., 20">
-                </div>
-                <div class="form-group">
-                    <label for="acceleration">Acceleration (a) (m/s²):</label>
-                    <input type="number" id="acceleration" name="acceleration" step="any" placeholder="e.g., 5">
-                </div>
-                <div class="form-group">
-                    <label for="time">Time (t) (s):</label>
-                    <input type="number" id="time" name="time" step="any" placeholder="e.g., 4">
-                </div>
-                <div class="form-group">
-                    <label for="displacement">Displacement (Δx) (m):</label>
-                    <input type="number" id="displacement" name="displacement" step="any" placeholder="e.g., 50">
-                </div>
-                <button type="submit" class="btn">Calculate</button>
+                
+                    <label for="find">Choose what to find:</label>
+                    <select id="find" required>
+                        <option value="distance">Distance (d)</option>
+                        <option value="time">Time (t)</option>
+                        <option value="initialVelocity">Initial Velocity</option>
+                        <option value="finalvelocity">Final Velocity (vf)</option>
+                        <option value="acceleration">Acceleration (a)</option>
+                    </select>
+                
+                <label for="vf">Final Velocity (vf) [m/s]:</label>
+                <input type="number" id="vf" placeholder="Enter vf" step="any">
+
+                <label for="vi">Initial Velocity (vi) [m/s]:</label>
+                <input type="number" id="vi" placeholder="Enter vi" step="any">
+
+                <label for="t">Time (t) [s]:</label>
+                <input type="number" id="t" placeholder="Enter t" step="any">
+
+                <label for="a">Acceleration (a) [m/s²]:</label>
+                <input type="number" id="a" placeholder="Enter a" step="any">
+
+                <label for="d">Distance (d) [m]:</label>
+                <input type="number" id="d" placeholder="Enter d" step="any">
+
+                <button type="button" id="calculateButton">Calculate</button>
             </form>
-            <p id="result" class="result-text"></p>
+            <div class="output">
+                <h3>Result:</h3>
+                <p id="result">N/A</p>
+                <p id="equationUsed">Equation Used: N/A</p>
+            </div>
         </section>
     </div>
-
-
-    <script src="kinematic.js"></script>
+    <script src="kin.js"></script>
 </body>
 </html>

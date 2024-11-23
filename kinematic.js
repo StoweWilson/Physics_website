@@ -1,5 +1,6 @@
 // Initialize the variables
 let dis = 0, acc = 0, vi = 0, vf = 0, t = 0;
+let disUnit = '', accUnit = '', viUnit = '',vfUnit = '', tUnit = '';
 
 // Utility function to prompt the user and update the display in the terminal
 function getInput(promptMessage) {
@@ -37,14 +38,27 @@ async function findAcc() {
         acc_choice = await getInput("Does your problem have constant acceleration (yes or no)?");
         if (acc_choice === "yes") {
             acc = parseFloat(await getInput("Enter the acceleration:"));
+            accUnit = await getInput("Enter the unit for acceleration (optional, press Enter to skip):")
+            if (!accUnit) accUnit = 'm/s²'
             break;
         } else if (acc_choice === "no") {
-            acc = parseFloat(await getInput("Enter the acceleration (if known):"));
-            break;
+            const isConstant = await getInput("Is the acceleration constant (yes or no)?");
+            if (isConstant === "no"){
+                const outputDiv = document.getElementById("output");
+                outputDiv.innerHTML += "Kinesmatic equations have to have constant acceleration exiting the program.\n";
+                return false;
+            }else if (isConstant === "yes"){
+                acc = 0;
+                accUnit = '';
+                break;
+            }else{
+                await getInput("Invalid input. Please enter 'yes' or 'no'.");
+            }
         } else {
             await getInput("Invalid input. Please enter 'yes' or 'no'.");
         }
     }
+    return true;
 }
 
 // Function to get distance input
@@ -54,9 +68,12 @@ async function findDistance() {
         dis_choice = await getInput("Does your problem have distance (yes or no)?");
         if (dis_choice === "yes") {
             dis = parseFloat(await getInput("Enter the distance between two points:"));
+            disUnit = await getInput("Enter the unit for distance (optional, press Enter to skip):");
+            if (!disUnit) disUnit = 'meters';
             break;
         } else if (dis_choice === "no") {
             dis = 0;
+            disUnit = '';
             break;
         } else {
             await getInput("Invalid input. Please enter 'yes' or 'no'.");
@@ -72,9 +89,12 @@ async function findVelocity() {
         velocityi_choice = await getInput("Does your problem have initial velocity (yes or no)?");
         if (velocityi_choice === "yes") {
             vi = parseFloat(await getInput("Enter the initial velocity:"));
+            viUnit = await getInput("Enter the unit for initial velocity (optional, press Enter to skip):");
+            if (!viUnit) viUnit = 'm/s';
             break;
         } else if (velocityi_choice === "no") {
             vi = 0;
+            viUnit = '';
             break;
         } else {
             await getInput("Invalid input. Please enter 'yes' or 'no'.");
@@ -85,9 +105,12 @@ async function findVelocity() {
         velocityf_choice = await getInput("Does your problem have final velocity (yes or no)?");
         if (velocityf_choice === "yes") {
             vf = parseFloat(await getInput("Enter the final velocity:"));
+            vfUnit = await getInput("Enter the unit for final velocity (optional, press Enter to skip):");
+            if(!vfUnit) vfUnit = 'm/s';
             break;
         } else if (velocityf_choice === "no") {
             vf = 0;
+            vfUnit = ' ';
             break;
         } else {
             await getInput("Invalid input. Please enter 'yes' or 'no'.");
@@ -102,9 +125,12 @@ async function findTime() {
         time_choice = await getInput("Does your problem have time (yes or no)?");
         if (time_choice === "yes") {
             t = parseFloat(await getInput("Enter the time:"));
+            tUnit = await getInput("Enter the unit for time (optional, press Enter to skip):");
+            if (!tUnit) tUnit = 'seconds';
             break;
         } else if (time_choice === "no") {
             t = 0;
+            tUnit = '';
             break;
         } else {
             await getInput("Invalid input. Please enter 'yes' or 'no'.");
