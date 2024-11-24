@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="feed.css" />
+</head>
+<body>
+    <div class="logo">
+        <a href="index.html">DYUP</a>
+    </div>
+    <div class="header">Feedback Form</div>
+    <div class="form-container">
+        <div class="form-words">
+            <h1>Submit Feedback</h1>
+            <p>Let us know about any bugs or how we can improve your experience.</p>
+            <form id="feedbackForm" action="/submit-feedback" method="POST">
+                <label for="name">Name (Optional):</label>
+                <input type="text" id="name" name="name" placeholder="Your Name">
+        
+                <label for="email">Email (Optional):</label>
+                <input type="email" id="email" name="email" placeholder="Your Email">
+        
+                <label for="feedback">Feedback or bugs:</label>
+                <textarea id="feedback" name="feedback" rows="5" placeholder="Describe the bug or suggest an improvement" required></textarea>
+        
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        // Example inline JavaScript
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Feedback submitted!');
+        });
+    </script>
+</body>
+</html>

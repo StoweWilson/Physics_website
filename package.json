@@ -1,0 +1,16 @@
+{
+  "name": "physics.github.io",
+  "version": "1.0.0",
+  "description": "A personal project to practice Full Stack development Website Goals: 1. help solve kinematic problem 2. explain kinematic 3. help solve and explain vector addition 4. give it a working domain 5. help solve projectile motion problems 6. solve quadratic problem 7. make a better nav bar",
+  "main": "friction.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1"
+  }
+}
