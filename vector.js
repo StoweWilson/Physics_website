@@ -1,80 +1,47 @@
-// Initialize arrays for x and y components of each vector
-let xComponents = [], yComponents = [];
+let vectors = [];
 
-// Utility function to prompt the user and update the display in the terminal
-function getInput(promptMessage) {
-    return new Promise((resolve) => {
-        const outputDiv = document.getElementById("output");
-        outputDiv.innerHTML += `${promptMessage}\n`;
+// Function to add a vector
+document.getElementById("addVector").addEventListener("click", () => {
+    const magnitude = parseFloat(document.getElementById("magnitude").value);
+    const direction = parseFloat(document.getElementById("direction").value);
 
-        const input = document.getElementById("input");
-        const submitButton = document.getElementById("submit");
+    if (isNaN(magnitude) || isNaN(direction)) {
+        alert("Please enter valid magnitude and direction values.");
+        return;
+    }
 
-        const submitInput = () => {
-            const userInput = input.value.trim();
-            outputDiv.innerHTML += `> ${userInput}\n`;
-            input.value = "";
-            input.removeEventListener("keydown", handleEnterKey); // Remove listener
-            resolve(userInput);
-        };
+    const radians = direction * (Math.PI / 180); // Convert degrees to radians
+    const x = magnitude * Math.cos(radians);
+    const y = magnitude * Math.sin(radians);
 
-        function handleEnterKey(event){
-            if(event.key === "Enter"){
-                event.preventDefault();
-                submitInput();
-            }
-        }
-        submitButton.onclick = submitInput;
+    vectors.push({ magnitude, direction, x, y });
+    updateVectorList();
+});
 
-        input.addEventListener("keydown", handleEnterKey);
+// Function to update the vector list display
+function updateVectorList() {
+    const vectorList = document.getElementById("vectorList");
+    vectorList.innerHTML = "";
+    vectors.forEach((vector, index) => {
+        vectorList.innerHTML += `<li>Vector ${index + 1}: Magnitude = ${vector.magnitude}, Direction = ${vector.direction}°</li>`;
     });
 }
 
-// Function to get vector magnitude and direction
-async function getVector() {
-    const magnitude = parseFloat(await getInput("Enter the vector magnitude:"));
-    const angle = parseFloat(await getInput("Enter the vector direction in degrees (0° is east, 90° is north, 270° South):"));
-    
-    // Convert to x and y components
-    const radians = angle * (Math.PI / 180); // Convert angle to radians
-    const x = magnitude * Math.cos(radians);
-    const y = magnitude * Math.sin(radians);
-    
-    xComponents.push(x);
-    yComponents.push(y);
-    
-    return { magnitude, angle, x, y };
-}
-
-// Function to sum vector components and calculate resultant
-function calculateResultant() {
-    const sumX = xComponents.reduce((acc, x) => acc + x, 0);
-    const sumY = yComponents.reduce((acc, y) => acc + y, 0);
-    const resultantMagnitude = Math.sqrt(sumX ** 2 + sumY ** 2);
-    const resultantAngle = Math.atan2(sumY, sumX) * (180 / Math.PI); // Convert back to degrees
-    
-    return { magnitude: resultantMagnitude, angle: resultantAngle, x: sumX, y: sumY };
-}
-
-// Main function to gather vector inputs
-async function main() { 
-    const outputDiv = document.getElementById("output");
-    outputDiv.innerHTML = "Vector Addition Calculator\n";
-    
-    let addMoreVectors = "yes";
-    while (addMoreVectors === "yes") {
-        const vector = await getVector();
-        outputDiv.innerHTML += `Vector:\n Magnitude = ${vector.magnitude}\n Direction = ${vector.angle}°\n Component X = ${vector.x.toFixed(2)}, Component Y = ${vector.y.toFixed(2)}\n`;
-        
-        addMoreVectors = (await getInput("Add another vector? (yes or no):")).toLowerCase();
+// Function to calculate the resultant vector
+document.getElementById("calculateResult").addEventListener("click", () => {
+    if (vectors.length === 0) {
+        alert("Please add at least one vector.");
+        return;
     }
-    
-    // Calculate the resultant vector
-    const resultant = calculateResultant();
-    outputDiv.innerHTML += `\nResultant Vector:\nMagnitude: ${resultant.magnitude.toFixed(2)}\nDirection: ${resultant.angle.toFixed(2)}°\nComponents: (${resultant.x.toFixed(2)}, ${resultant.y.toFixed(2)})\n`;
-}
 
-// Run the main function when the page is loaded
-document.addEventListener("DOMContentLoaded", () => {
-    main();
+    const sumX = vectors.reduce((acc, vector) => acc + vector.x, 0);
+    const sumY = vectors.reduce((acc, vector) => acc + vector.y, 0);
+    const resultantMagnitude = Math.sqrt(sumX ** 2 + sumY ** 2);
+    const resultantDirection = Math.atan2(sumY, sumX) * (180 / Math.PI);
+
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = `
+        Magnitude: ${resultantMagnitude.toFixed(2)}<br>
+        Direction: ${resultantDirection.toFixed(2)}°
+    `;
 });

@@ -2,23 +2,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vector Calculator 1.0</title>
+    <title>Vector Addition</title>
     <link rel="stylesheet" href="vector.css" />
 </head>
 <body>
-    <div class="logo">
-        <a href="index.html">DYUP</a>
+    <header>
+        <div class="logo">
+            <a href="index.html">DYUP</a>
+        </div>
+    </header>
+<div class="header-container">
+    <div class="header">Understanding Vector addition</div>
+</div>
+    <div class="what-is-it-container">
+        <div class="what">What is it?</div>
+        <div class="def-what">Vector addition combines two or more vectors to find a single vector that shows their total effect. Think of it like combining directions on a map—each vector has a size and a direction. You can add them by aligning them tip-to-tail or breaking them into parts (like north/south and east/west). The final result, called the resultant vector, shows the overall direction and strength of all the vectors combined.</div>
     </div>
-    <div class="title">
-        <h1>Vector Calculator 1.0</h1>
-    </div>
-<div id="terminal">
-    <div id="output"></div>
-    <div id="input-container">
-        <input type="text" id="input" placeholder="Type your answer here..." autofocus>
-        <button id="submit">Submit</button>
+<div class="how-to-solve-container">
+        <div class="how">How To Solve</div>
+    <div class="def-how">
+        <p>
+            <strong>1. Understand the Problem:</strong> Identify the vectors, including their magnitudes (size) and directions (angles).
+        </p>
+        <p>
+            <strong>2. Break Down Each Vector:</strong> Use trigonometry to calculate the x and y components for each vector:
+        </p>
+        <ul>
+            <li> x = magnitude × cos(angle)</li>
+            <li> y = magnitude × sin(angle) </li>
+        </ul>
+        <p>
+            <strong>3. Add Components:</strong> Add all x-components to find the total Σx , and do the same for the y-components to find Σy.
+        </p>
+        <p>
+            <strong>4. Find the Resultant Vector:</strong> Calculate the magnitude using the Pythagorean theorem:
+        </p>
+        <ul>
+            <li> Resultant Magnitude = √(Σx² + Σy²)</li>
+        </ul>
+        <p>
+            Find the angle using:
+        </p>
+        <ul>
+            <li>Angle = tan⁻¹(Σy / Σx)</li>
+        </ul>
+        <p>
+            <strong>5. Express the Result:</strong> Write the resultant vector as magnitude and direction, e.g., “The resultant is 10 m/s at 45°.”
+        </p>
     </div>
 </div>
+<div class="equations-container">
+    <div class="equations-header">Eqautions</div>
+    <div class="equations">
+        <ul>
+            
+                <strong>1. Component Formulas:</strong>
+            <li>
+                <p><code>x = magnitude × cos(angle)</code></p>
+            </li>
+            <li>
+                <p><code>y = magnitude × sin(angle)</code></p>
+            </li>
+            
+                <strong>2. Resultant Magnitude:</strong>
+            <li>
+                <p><code>Resultant Magnitude = √(Σx² + Σy²)</code></p>
+            </li>
+           
+                <strong>3. Resultant Angle:</strong>
+            <li>
+                <p><code>Resultant Angle = tan⁻¹(Σy / Σx)</code></p>
+            </li>
+            
+                <strong>4. Adding Multiple Vectors:</strong>
+            <li>
+                <p><code>Σx = x₁ + x₂ + ... + xₙ</code></p>
+            </li>
+            <li>
+                <p><code>Σy = y₁ + y₂ + ... + yₙ</code></p>
+            </li>
+            
+                <strong>5. Resultant Vector in Polar Form:</strong>
+            <li>
+                <p><code>Vector Magnitude = √(x² + y²)</code></p>
+            </li>
+            <li>
+                <p><code>Vector Direction = tan⁻¹(y / x)</code></p>
+            </li>
+            
+                <strong>6. Unit Vector Representation:</strong>
+            <li>
+                <p><code>v = x î + y ĵ</code></p>
+            </li>
+        </ul>
+    </div>
+
+</div>
+<div class="calculator-container">
+    <div class="calculate-header">Vector Addition Calculator</div>
+    <div class="input-section">
+        <label for="magnitude">Magnitude:</label>
+        <input type="number" id="magnitude" placeholder="Enter magnitude" required>
+        <label for="direction">Direction (°):</label>
+        <input type="number" id="direction" placeholder="Enter direction in degrees" required>
+        <button id="addVector">Add Vector</button>
+    </div>
+    <div class="result-section">
+        <button id="calculateResult">Calculate Resultant</button>
+        <div class="result-output">
+            <h2>Result:</h2>
+            <div id="result"></div>
+        </div>
+    </div>
+    <div class="vectors-list">
+        <h3>Entered Vectors:</h3>
+        <ul id="vectorList"></ul>
+    </div>
+</div>
+
     <script src="vector.js"></script>
+    
 </body>
 </html>
