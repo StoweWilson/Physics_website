@@ -177,14 +177,18 @@ body {
     position: relative;
     font-size: 14rem;
     font-weight: 900;
-    color: #203354;
-    background-image: url('Equatioins_2.jpeg');
+    color: transparent;
+    background-image: url('Equatioins.jpeg');
     background-size: cover;
     background-position: center;
     -webkit-background-clip: text; /* Clips the background to the text */
     background-clip: text; 
+    -webkit-text-fill-color: transparent;
     bottom: 150px;
 
+}
+.main-Physics{
+    color: #203354;
 }
 .scroll-indicator{
     position: absolute;
