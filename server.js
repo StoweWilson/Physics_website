@@ -1,32 +1,36 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const fs = require('fs');
+const express = require("express");
+const bodyParser = require("body-parser");
+const fs = require("fs");
 const app = express();
-const port =3000;
 
-app.use(bodyParser.urlencoded({extended:false}));
+// Middleware to parse JSON
 app.use(bodyParser.json());
-app.use(express.static('public'));
 
-app.post('/submit-feedback', (req, res)=>{
-    const {name, email, feedback } =req.body;
+// Serve static files (HTML, JS)
+app.use(express.static(__dirname));
 
-    console.log('Feedback received:');
-    console.log(`Name: ${name}`);
-    console.log(`Email: ${email}`);
-    console.log(`Feedback: ${feedback}`);
+// Route to handle form submission
+app.post("/submit-survey", (req, res) => {
+    const { name, feed } = req.body;
 
-    const feedbackData = {
-        name: name || 'Anonymous',
-        email: email || 'N/A',
-        feedback: feedback,
-    };
+    if (!name || !feed) {
+        return res.status(400).send("Invalid input");
+    }
 
-    fs.appendFileSync('feedback.txt', JSON.stringify(feedbackData)+ '\n');
+    const data = `${name},${feed}\n`;
 
-    res.send('Thank you for your feedback!');
+    // Append data to the CSV file
+    fs.appendFile("survey_data.csv", data, (err) => {
+        if (err) {
+            console.error("Error writing to file:", err);
+            return res.status(500).send("Failed to save data");
+        }
+        res.send("Data saved successfully");
+    });
 });
 
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+// Start the server
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running at http://localhost:${PORT}`);
 });
