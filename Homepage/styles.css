@@ -272,74 +272,83 @@ body {
     background-clip: text; 
     
 }
-.buttons-wrapper{
+
+.third-container{
+    position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: 20px;
-    flex-grow: 1;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    text-align: center;
-
-}
-.kin-button,.quad-button,.vec-button,.fri-button{
-    display: inline-flex;
-    padding: 35px 35px;
-    border: 5px solid #fefbea;
-    background-color: #203354;
-    color: #fefbea;
-    font-size: 3rem;
-    font-weight: bold;
-    border-radius: 15px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    flex-shrink: 0;
-    min-width: 150px;
-}
-
-.kin-button:hover,.quad-button:hover,.vec-button:hover{
-    border: 5px solid #203354;
-    background-color: #fefbea;
-    color: #203354;
-}
-
-.scroll-btn{
-    width: 70px;
-    height: 70px;
-    border: 5px solid #fefbea;
-    border-radius: 50%;
-    background-color: #203354; /* Dark Blue */
-    color: #ffffff; /* White arrow */
-    font-size: 40px;
-    font-weight: 900;
-    cursor: pointer;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-   
-}
-.scroll-btn-left{
-    margin-right: auto;
-}
-.scroll-btn-right{
-    margin-left: auto;
-}
-/* Make sure the buttons don't overflow */
-.buttons-wrapper {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    width: 100%;
-    overflow-x: auto;
-    padding-bottom: 20px;
-}
-.scroll-btn:hover {
-    background-color: #fefbea; /* Lighter Blue on hover */
-    color: #203354;
-    transform: scale(1.1); /* Slightly enlarge */
+    height: 90vh;
+    width: calc(100% - 30px);
+    background-color: #203354;
+    border: 5px solid #fefbea;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 0 auto;
+    margin-top: 30px;
+    overflow: hidden;
+    
 }
 
+#chat-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: rgba(32, 51, 84, 0.3);
+}
+#messages {
+    height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+#messages div {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+#messages .user {
+    background-color: #e6f7ff;
+    text-align: left;
+}
+
+#messages .ai {
+    background-color: #f4f4f4;
+    text-align: left;
+}
+
+#messages pre {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+#chat-form {
+    display: flex;
+    margin-top: 10px;
+}
+#user-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+#chat-form button {
+    padding: 10px 20px;
+    gap: 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .idontword {

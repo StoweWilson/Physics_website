@@ -51,21 +51,25 @@
                 <a>So I Made This</a>
             </div>
         </div>
-        <div class="button-container">
-            <button id="left-arrow" class="scroll-btn left" onclick="scrollLeft()">&#10094;</button>
-            <div class="buttons-wrapper">
-                <a href="/Kinsmatic/kin.html" class="kin-button">Kinematic</a>
-                <a href="/Friction/friction.html" class="fri-button">Friction</a>
-                <a href="/Quadratic/quad.html" class="quad-button">Quadratic</a>
-                <a href="/Vector/vector.html" class="vec-button">Vector Addition</a>
-            </div>
-            <button id="right-arrow" class="scroll-btn right" onclick="scrollRight()">&#10095;</button>
+    </div>
+    <div class="third-container">
+        <div id="chat-container">
+         <div id="messages"></div>
+            <form id="chat-form">
+                <input type="text" id="user-input" placeholder="Ask a question..." required />
+                <button type="submit">Send</button>
+            </form>
         </div>
     </div>
-    </div>
+</div>
 <div class="content-filler"></div>
 
 <script src="try.js"></script>
+
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </body>
