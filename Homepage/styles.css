@@ -153,8 +153,8 @@ body {
     position: relative;
     font-size: 13.5rem;
     font-weight: 900;
-    right: 360px;
-    top: 175px;
+    right: 330px;
+    top: 200px;
 }
 .main-you{
     font-size: 13.5rem;
@@ -162,6 +162,7 @@ body {
     color: #203354;
     position: relative;
     bottom: 50px;
+    left: 60px;
 }
 .main-understand{
     position: relative;
@@ -191,7 +192,7 @@ body {
 }
 .scroll-indicator{
     position: absolute;
-    bottom: 30px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 7rem;
@@ -521,6 +522,7 @@ body {
     .main-you {
         font-size: 6rem;
         top: -10px;
+        left: 0px;
     }
 
     .main-do{
