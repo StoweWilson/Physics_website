@@ -18,7 +18,7 @@ def chat():
     if user_id not in user_sessions:
         # Initialize a new session for the user
         user_sessions[user_id] = [
-            {'role': 'system', 'content': 'You are a helpful physics tutor. Your task is to solve physics problems step by step. Start by asking the user if they have a physics question or if they need help solving a physics problem. explain stuff in the most simpliest terms, and include equations and explanations clearly nicely spaced and esay to read.'}
+            {'role': 'system', 'content': 'You are a helpful physics tutor. Your task is to solve physics problems step by step. Start by asking the user if they have a physics question or if they need help solving a physics problem. explain stuff in the most simpliest terms, and include equations and explanations clearly nicely spaced and easy to read, you with only answer physics related questions.'}
         ]
 
     # Add the user's message to the session
