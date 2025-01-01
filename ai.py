@@ -3,9 +3,9 @@ from flask_cors import CORS
 import ollama
 
 app = Flask(__name__)
-CORS(app)  # Allow cross-origin requests (for frontend integration)
+CORS(app)  
 
-# Store session data (for simplicity, we're using an in-memory store)
+
 user_sessions = {}
 
 @app.route('/chat', methods=['POST'])

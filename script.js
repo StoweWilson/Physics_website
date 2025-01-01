@@ -2,7 +2,7 @@ const chatForm = document.getElementById("chat-form");
 const userInput = document.getElementById("user-input");
 const messages = document.getElementById("messages");
 
-const userId = "unique_user_id"; // Replace with a unique identifier for each user (e.g., session ID)
+const userId = "unique_user_id"; // Replace with a unique identifier for each user 
 
 // Auto-start conversation
 document.addEventListener("DOMContentLoaded", async () => {
@@ -75,7 +75,7 @@ function displayMessage(message, sender) {
     }
 
     messages.appendChild(messageElement);
-    messages.scrollTop = messages.scrollHeight; // Scroll to the bottom
+    messages.scrollTop = messages.scrollHeight; 
 
     // Trigger MathJax to render LaTeX
     if (sender === "ai") {
@@ -84,7 +84,7 @@ function displayMessage(message, sender) {
 }
 
 function formatAIResponse(response) {
-    const paragraphs = response.split("\n").filter(line => line.trim() !== ""); // Remove empty lines
+    const paragraphs = response.split("\n").filter(line => line.trim() !== ""); 
     let formattedResponse = '<div class="ai-response">';
 
     paragraphs.forEach((paragraph) => {
