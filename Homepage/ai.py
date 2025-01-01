@@ -14,13 +14,11 @@ def chat():
     user_id = data.get('user_id', 'default_user')  # Unique ID for the user
     user_input = data.get('message', '').strip()
 
-    if not user_input:
-        return jsonify({'response': "Hello! How can I assist you with physics today?"}), 200
 
     if user_id not in user_sessions:
         # Initialize a new session for the user
         user_sessions[user_id] = [
-            {'role': 'system', 'content': 'You are a helpful physics tutor. Your task is to solve physics problems step by step. Start by asking the user if they have a physics question or if they need help solving a physics problem. Do not move to the next step until the user responds, and include equations and explanations clearly nicely spaced and esay to read.'}
+            {'role': 'system', 'content': 'You are a helpful physics tutor. Your task is to solve physics problems step by step. Start by asking the user if they have a physics question or if they need help solving a physics problem. explain stuff in the most simpliest terms, and include equations and explanations clearly nicely spaced and esay to read.'}
         ]
 
     # Add the user's message to the session

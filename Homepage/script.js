@@ -68,7 +68,6 @@ function displayMessage(message, sender) {
     messageElement.classList.add("message", sender);
 
     if (sender === "ai") {
-        // Format the AI response, preserving LaTeX math
         messageElement.innerHTML = formatAIResponse(message);
     } else {
         // Plain user message
@@ -85,23 +84,35 @@ function displayMessage(message, sender) {
 }
 
 function formatAIResponse(response) {
-    const sections = response.split(/\*\*(.*?)\*\*/); // Split by bold markers
-    let formattedResponse = "";
+    const paragraphs = response.split("\n").filter(line => line.trim() !== ""); // Remove empty lines
+    let formattedResponse = '<div class="ai-response">';
 
-    sections.forEach((section, index) => {
-        if (index % 2 === 1) {
-            // Bold section header
-            formattedResponse += `<p><strong>${section.trim()}</strong></p>`;
-        } else {
-            // Check for LaTeX math and format it
-            const latexRegex = /\$.*?\$/g; // Match LaTeX math expressions
-            const processedText = section.replace(latexRegex, match => {
-                return `<span class="math">${match}</span>`;
-            });
-            formattedResponse += `<p>${processedText.trim()}</p>`;
+    paragraphs.forEach((paragraph) => {
+        // Step headers
+        if (paragraph.startsWith("Step")) {
+            formattedResponse += `<p class="step-header">${paragraph.trim()}</p>`;
+        }
+        // Bullet points
+        else if (paragraph.startsWith("*")) {
+            const bulletPoints = paragraph.split("\n").map(line => line.replace("*", "").trim());
+            const listItems = bulletPoints.map(item => `<li>${item}</li>`).join("");
+            formattedResponse += `<ul>${listItems}</ul>`;
+        }
+        // Summary section
+        else if (paragraph.startsWith("Summary")) {
+            formattedResponse += `<p class="summary-header"><strong>${paragraph.trim()}</strong></p>`;
+        }
+        // Equations
+        else if (paragraph.includes("$")) {
+            formattedResponse += `<p class="equation">${paragraph.trim()}</p>`;
+        }
+        // Plain text
+        else {
+            formattedResponse += `<p>${paragraph.trim()}</p>`;
         }
     });
 
+    formattedResponse += "</div>";
     return formattedResponse;
 }
 
