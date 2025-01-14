@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.post("https://api.render.com/deploy/srv-cu27il1opnds73aksg20?key=7OjCO68HaEg/api/chat", async (req, res) => {
+app.post("/api/chat", async (req, res) => {
     const { message } = req.body;
 
     try {
