@@ -131,3 +131,32 @@ function hideTypingIndicator() {
     const typingIndicator = document.getElementById("typing-indicator");
     if (typingIndicator) typingIndicator.remove();
 }
+
+async function sendMessage(userMessage) {
+    try {
+        const response = await fetch("https://physics-website.onrender.com/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                message: userMessage,
+                user_id: "default_user"
+            })
+        });
+
+        const data = await response.json();
+        console.log("AI Response:", data.response); // Display response in console
+
+        // If you have a chat UI, update it here:
+        document.getElementById("chat-form").innerHTML += `<p><strong>AI:</strong> ${data.response}</p>`;
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+
+// Example usage when user submits a message
+document.getElementById("sendButton").addEventListener("click", function() {
+    const userInput = document.getElementById("userMessage").value;
+    sendMessage(userInput);
+});
