@@ -157,6 +157,6 @@ async function sendMessage(userMessage) {
 
 // Example usage when user submits a message
 document.getElementById("sendButton").addEventListener("click", function() {
-    const userInput = document.getElementById("userMessage").value;
+    const userInput = document.getElementById("user-input").value;
     sendMessage(userInput);
 });
