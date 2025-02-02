@@ -358,7 +358,7 @@ body {
 }
 
 .ai-response {
-    padding: 15px;
+    padding: 10px;
     border-radius: 10px;
     color: white;
     line-height: 1.8;
@@ -374,6 +374,23 @@ body {
     text-transform: uppercase;
 }
 
+.summary-header {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 15px;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.equation {
+    background-color: rgba(0, 123, 255, 0.1);
+    border-left: 4px solid #007bff;
+    padding: 8px;
+    margin: 8px 0;
+    font-family: 'Courier New', monospace;
+    color: #333;
+}
 
 .ai-response .summary-header {
     font-size: 1.4em;
